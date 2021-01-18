@@ -3,12 +3,13 @@ A modified non-dominated sorting genetic algorithm (NSGA-IV) is proposed to trad
 
 # Paper
 Flexible worker allocation in aircraft final assembly line using multi-objective evolutionary algorithms
-The paper can be download from researchgat(https://www.researchgate.net/publication/348539447_Flexible_worker_allocation_in_aircraft_final_assembly_line_using_multi-objective_evolutionary_algorithms)
 
-#code
-I writed the NSGA-IV code on the basis of java and MoeaFramework. The latest release can be downloaded from our website or from the releases page. 
+The paper can be download from researchgate(https://www.researchgate.net/publication/348539447_Flexible_worker_allocation_in_aircraft_final_assembly_line_using_multi-objective_evolutionary_algorithms)
 
-You should add Maven dependency to pom.xml file:
+# code
+I writed the NSGA-IV code on the basis of java and MoeaFramework. The latest release can be downloaded from the releases page. 
+
+You should add Maven dependency to pom.xml file firstly:
 <dependency>
     <groupId>org.moeaframework</groupId>
     <artifactId>moeaframework</artifactId>
