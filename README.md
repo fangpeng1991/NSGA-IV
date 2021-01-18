@@ -10,7 +10,7 @@ The paper can be download from researchgate(https://www.researchgate.net/publica
 I writed the NSGA-IV code on the basis of java and MoeaFramework. The latest release can be downloaded from the releases page. 
 
 You should add Maven dependency to pom.xml file firstly:
- <dependency>
+. <dependency>
     <groupId>org.moeaframework</groupId>
     <artifactId>moeaframework</artifactId>
     <version>2.13</version>
