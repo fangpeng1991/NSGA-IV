@@ -35,7 +35,7 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 		// TODO Auto-generated constructor stub
 		super(problem, population, archive, initialization);
 
-		// define the selection operator,二元锦标赛选择
+		// define the selection operator,Dual Tournament Selection
 		selection = new TournamentSelection(2, new ChainedComparator(new RankComparator(), new CrowdingComparator()));
 		this.variation = variation;
 	}
@@ -46,7 +46,7 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 
 		// get the current population
 		NondominatedSortingPopulation population = (NondominatedSortingPopulation) getPopulation();
-		// 修改
+		
 		EpsilonBoxDominanceArchive archive = (EpsilonBoxDominanceArchive) getArchive();
 		Population offspring = new Population();
 		int populationSize = population.size();
@@ -54,14 +54,14 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 		// run NSGA-II using selection with replacement; this version allows
 		// using custom selection operators
 		while (offspring.size() < populationSize) {
-			// 从pop(t)中选择2个个体
+			// select two individuals from pop(t)
 			Solution[] parents = selection.select(variation.getArity(), population);
 
-			// 交叉、变异后的个体纳入offspring(t)
+			// crossover、mutation. Then put new populations into offspring(t)
 			offspring.addAll(variation.evolve(parents));
 		}
 
-		// 适应度评估
+		// Fitness assessment
 		evaluateAll(offspring);
 
 		if (archive != null) {
@@ -73,7 +73,7 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 		population.forEach(parent -> data_all.add(parent));
 		population.clear();
 
-		// 计算多目标指标，非支配排序估计
+		// Calculate multi-objective values, and non-dominated ranking
 		NondominatedSorting nondominatedSorting = new NondominatedSorting();
 		nondominatedSorting.evaluate(data_all);
 
@@ -111,10 +111,10 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 			}
 		}
 
-		// 记录移除个体的索引
+		// Record the individual indexes that are removed. 
 		List<Integer> removeIndexs = new ArrayList<Integer>();
 		while (data_P_R.size() - removeIndexs.size() > populationSize) {
-			// 找出距离最近的两个簇c_i 和c_j ，且c_i和c_j至少有一个属于Q2
+			// Find the two closest clusters c_i  and c_j，and tt least one of them is a member of Q2
 			Double minDistance = Double.MAX_VALUE;
 			int min_i = 0;
 			int min_j = 0;
@@ -142,7 +142,7 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 
 			if ("Q2".equals(data_P_R.get(min_i).getAttribute("subarea"))
 					&& "Q2".equals(data_P_R.get(min_j).getAttribute("subarea"))) {
-				// 计算d(c_i)和d(c_j)
+				// Calculate (c_i) and d(c_j)
 				Double minDistance_i = this.calculateMinDistance(wed, removeIndexs, min_i, min_j);
 				Double minDistance_j = this.calculateMinDistance(wed, removeIndexs, min_j, min_i);
 				if (minDistance_i.compareTo(minDistance_j) == -1) {
@@ -159,7 +159,7 @@ public class nsgaiv extends AbstractEvolutionaryAlgorithm {
 			}
 		}
 
-		// 迭代移除
+		// Iteration to remove
 		for (int i = 0; i < data_P_R.size(); i++) {
 			if (removeIndexs.contains(i)) {
 				continue;
