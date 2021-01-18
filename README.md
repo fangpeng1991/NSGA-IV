@@ -11,7 +11,7 @@ I writed the NSGA-IV code on the basis of java and MoeaFramework. The latest rel
 
 You should add Maven dependency to pom.xml file firstly:
 \<dependency>
-    <groupId>org.moeaframework</groupId>
-    <artifactId>moeaframework</artifactId>
-    <version>2.13</version>
-</dependency>
+    \<groupId>org.moeaframework\</groupId>
+    \<artifactId>moeaframework\</artifactId>
+    \<version>2.13\</version>
+\</dependency>
