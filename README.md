@@ -13,10 +13,10 @@ You should add Maven dependency to pom.xml file firstly:
 
 \<dependency>
 
->>>>\<groupId>org.moeaframework\</groupId>
+>>\<groupId>org.moeaframework\</groupId>
     
->>>>\<artifactId>moeaframework\</artifactId>
+>>\<artifactId>moeaframework\</artifactId>
     
->>>>\<version>2.13\</version>
+>>\<version>2.13\</version>
     
 \</dependency>
